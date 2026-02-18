@@ -79,26 +79,42 @@ th {
 <h1>🌐 Actividad Clase 4</h1>
 <h2>Comunicación entre Servicios + REST + Eventos + Service Discovery</h2>
 
-<p><strong>Equipo:</strong> ____________________</p>
-<p><strong>Proyecto:</strong> ____________________</p>
+<p><strong>Equipo:</strong> _<u>Manuel Felipe Fernandez</u>__<u>José Luis Montenegro</u>____<u>Jose Hebert Aponza</u>____</p>
+<p><strong>Proyecto:</strong> ____<u>TourFer</u>_____</p>
 
 <div class="section">
 <h2>🪜 1. Interacciones entre Servicios</h2>
 
 <p><strong>Interacción 1</strong></p>
-<label>Servicio que envía:</label>
+<label>Servicio que envía:</label> Servicio de reservas.
 <div class="line"></div>
-<label>Servicio que recibe:</label>
+<label>Servicio que recibe:</label> Servicio de autenticación.
 <div class="line"></div>
-<label>Información enviada:</label>
+<label>Información enviada:</label> Credenciales de usuario.
 <div class="line"></div>
-<label>¿Qué sucede si no responde?</label>
+<label>¿Qué sucede si no responde?</label> No permite seguir sin confirmar primero la identidad del usuario que intenta hacer la reserva.
 <div class="line"></div>
-
+<br>
 <p><strong>Interacción 2</strong></p>
 <div class="line"></div>
-
+<label>Servicio que envía:</label> Servicio de reservas.
+<div class="line"></div>
+<label>Servicio que recibe:</label> Servicio de catalogo.
+<div class="line"></div>
+<label>Información enviada:</label> ID del tour, y número de cupos.
+<div class="line"></div>
+<label>¿Qué sucede si no responde?</label> No permite realizar la reserva, ya que se necesita confirmar la disponibilidad para ese número de cupos.
+<div class="line"></div>
+<br>
 <p><strong>Interacción 3</strong></p>
+<div class="line"></div>
+<label>Servicio que envía:</label> Servicio de reservas.
+<div class="line"></div>
+<label>Servicio que recibe:</label> Servicio de notificaciones.
+<div class="line"></div>
+<label>Información enviada:</label> ID de la reserva, correo del cliente, y detalles del tour.
+<div class="line"></div>
+<label>¿Qué sucede si no responde?</label> La reserva se realiza, pero el cliente no recibirá una confirmación en su correo electronico.
 <div class="line"></div>
 </div>
 
@@ -110,25 +126,25 @@ th {
 <th>Interacción</th>
 <th>REST</th>
 <th>Evento</th>
-<th>¿Por qué?</th>
+<th>¿Por qué?</th>a
 </tr>
 <tr>
-<td>1</td>
+<td>1. Autenticación</td>
+<td>X</td>
 <td></td>
-<td></td>
-<td></td>
+<td>El servicio necesita saber en ese mismo momento que permisos tiene el usuario para poder realizar el proceso.</td>
 </tr>
 <tr>
-<td>2</td>
+<td>2. Catalogo</td>
+<td>X</td>
 <td></td>
-<td></td>
-<td></td>
+<td>El servicio necesita saber en ese mismo momento que cupos disponibles tiene X tour, antes de realizar la reserva.</td>
 </tr>
 <tr>
-<td>3</td>
+<td>3. Notificaciones</td>
 <td></td>
-<td></td>
-<td></td>
+<td>X</td>
+<td>Se genera un evento llamado Reserva Confirmada, puesto que el servicio de notificaciones reacciona de forma independiente.</td>
 </tr>
 </table>
 </div>
@@ -144,42 +160,42 @@ th {
 <th>Justificación</th>
 </tr>
 <tr>
-<td>1</td>
+<td>1. Autenticación</td>
+<td>X</td>
 <td></td>
-<td></td>
-<td></td>
+<td>El sistema depende de esta respuesta para poder continuar al siguiente paso.</td>
 </tr>
 <tr>
-<td>2</td>
+<td>2. Catalogo</td>
+<td>X</td>
 <td></td>
-<td></td>
-<td></td>
+<td>Se debe garantizar una totalidad de cupos disponibles para poder continuar con la reserva.</td>
 </tr>
 <tr>
-<td>3</td>
+<td>3. Notificaciones</td>
 <td></td>
-<td></td>
-<td></td>
+<td>X</td>
+<td>El usuario no depende de esta confirmación por correo electronico para ver en pantalla la confirmación</td>
 </tr>
 </table>
 </div>
 
 <div class="section">
 <h2>🪜 4. Eventos Importantes del Sistema</h2>
-1️⃣ ______________________________________<br><br>
-2️⃣ ______________________________________<br><br>
-3️⃣ ______________________________________
+1️⃣ ___<u>Reserva Confirmada</u>__<br><br>
+2️⃣ ___<u>Tour Creado</u>_________<br><br>
+3️⃣ ___<u>Usuario Creado</u>______
 </div>
 
 <div class="section">
 <h2>🪜 5. Análisis de Fallos</h2>
-<label>Servicio más crítico:</label>
+<label>Servicio más crítico:</label> Servicio de usuarios.
 <div class="line"></div>
-<label>¿Qué pasaría si falla?</label>
+<label>¿Qué pasaría si falla?</label> Ningún usuario podría entrar al sistema ni realizar compras, quedando el sistema inutilizable.
 <div class="line"></div>
-<label>¿El sistema debe detenerse o continuar?</label>
+<label>¿El sistema debe detenerse o continuar?</label> Debe detenerse, ya que los clientes solo podrán visualizar los tours, sin poder ingresar o reservar.
 <div class="line"></div>
-<label>¿Cómo podrían manejar este fallo?</label>
+<label>¿Cómo podrían manejar este fallo?</label> 
 <div class="line"></div>
 </div>
 
